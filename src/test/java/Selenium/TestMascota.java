@@ -42,7 +42,7 @@ public void cerrar() {
         WebElement mensajeTexto = driver.findElement(By.id("login-submit"));
         //assertEquals("✅ Login realizado! Redirecionando...", mensajeTexto.getText());
         assertTrue(mensajeTexto.getText().contains("✅ Login realizado! Redirecionando..."));
-        
+
     }
     
     @Test
@@ -67,8 +67,6 @@ public void cerrar() {
         Thread.sleep(4000);
         driver.findElement(By.id("promotion-button")).click();
         Thread.sleep(4000);
-        //driver.findElement(By.id("promotion-message")).click();
-        //Thread.sleep(4000);
         driver.findElement(By.id("logout-button")).click();
         Thread.sleep(4000);
         driver.quit();
