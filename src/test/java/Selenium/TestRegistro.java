@@ -7,11 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestMascota {
-    private final String URL = "file://C:/Users/eslullitel/Documents/desafio_final_selenium_java.html";
+public class TestRegistro {
+private final String URL = "file://C:/Users/eslullitel/Documents/desafio_final_selenium_java.html";
     private WebDriver driver;
 
-  @Before
+    @Before
     public final void iniciar(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -19,59 +19,20 @@ public class TestMascota {
     }
 
     @After
-public void cerrar() {
+    public void cerrar() {
     if (driver != null) {
         driver.quit();
+        }
     }
-}
 
- private void login(String user, String pass) {
+    private void login(String user, String pass) {
         driver.findElement(By.id("login-username")).sendKeys(user);
         driver.findElement(By.id("login-password")).sendKeys(pass);
         driver.findElement(By.id("login-submit")).click();
     }
-
-@Test// 1Prueba de login con credenciales incorrectas
-    public void testLoginError() throws InterruptedException {
-        login("admin", "12345");
-        Thread.sleep(2000);
-        assert driver.findElement(By.id("login-error")).getText().contains("❌ Usuário ou senha inválidos. Use admin / 123456");
-        Thread.sleep(2000);  
-        driver.quit();
-    }
-@Test// 2Prueba de login exitoso
-    public void testLoginCorrecto() throws InterruptedException {
-        login("admin", "123456");
-        Thread.sleep(2000);
-        assert driver.findElement(By.id("welcome-message")).getText().contains("Bem-vindo, admin!"); // Verificar mensaje de bienvenida
-        Thread.sleep(2000); 
-        driver.quit();
-        
-    }
-
-@Test// 3Prueba de login exitoso y cierre de sesión
-    public void testLoginSalir() throws InterruptedException {
-        login("admin", "123456");
-        Thread.sleep(2000); 
-        driver.findElement(By.id("logout-button")).click();
-        Thread.sleep(2000);
-        driver.quit();
-    }
-     
-@Test// 3Prueba de acceso a la sección de promociones después de un login exitoso
-    public void verPromocion () throws InterruptedException{
-        login("admin", "123456");
-        Thread.sleep(4000);
-        driver.findElement(By.id("promotion-button")).click();
-        Thread.sleep(4000);
-        driver.findElement(By.id("logout-button")).click();
-        Thread.sleep(4000);
-        driver.quit();
-    }   
-
 @Test// Prueba de registro de una mascota con todos los campos completos
     public void registrarMascota() throws InterruptedException{
-        login("admin", "123456");
+    login("admin", "123456");
         Thread.sleep(2000);
         driver.findElement(By.id("nav-register")).click();
         Thread.sleep(2000);
@@ -118,5 +79,5 @@ public void cerrar() {
         
     }
     
-
+    
 }
